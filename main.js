@@ -9,5 +9,6 @@ function Y(X){
     return fib
 }
 
-console.log(Y(5));
+fib=Y(X=6)
+console.log('The fibonacci of '+X+ ' is '+ fib);
 
