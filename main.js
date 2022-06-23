@@ -12,8 +12,15 @@ function offSpinner(){
   const spinnerOff = document.getElementById('result');
   spinnerOff.classList.remove('spinner-border');
 }
+function Spinner(){
+  const spinner = document.getElementById('result');
+  spinner.innerText='';
+  spinner.classList.add('spinner-border');
+  spinner.classList.add('d-none');
+}
 
 btn.addEventListener('click',function(){
+  Spinner();
   onSpinner();
   let urlComplete = url + input.value;
   
@@ -24,6 +31,7 @@ btn.addEventListener('click',function(){
       offSpinner();
     console.log(data.result);
     result.innerHTML=data.result;
+    
     })}
      else if(input.value>50){
       offSpinner();
