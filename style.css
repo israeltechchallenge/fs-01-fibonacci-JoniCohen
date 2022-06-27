@@ -7,15 +7,16 @@ input::-webkit-inner-spin-button {
   color: #a94442;
   background-color:#EBCCCC ;
   width: 15%;
-  margin-left: 17%;
-  margin-top: -5%;
-  
+  margin-left: 12%;
+  margin-top: -3%;
+  padding-left: 1%;
 }
 .message-negative{
   color: #a94442;
   background-color:#EBCCCC ;
   width: 15%;
-  margin-left: 17%;
-  margin-top: -5%;
-  
+  margin-left: 12%;
+  margin-top: -3%;
+  padding-left: 1%;
 }
+
