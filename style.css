@@ -3,3 +3,19 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.message-larger{
+  color: #a94442;
+  background-color:#EBCCCC ;
+  width: 15%;
+  margin-left: 17%;
+  margin-top: -5%;
+  
+}
+.message-negative{
+  color: #a94442;
+  background-color:#EBCCCC ;
+  width: 15%;
+  margin-left: 17%;
+  margin-top: -5%;
+  
+}
