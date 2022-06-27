@@ -26,27 +26,52 @@ btn.addEventListener('click',function(){
   
   if(input.value<=50 && input.value>=0){
   fetch(urlComplete)
-  .then((response) => response.json())
+  .then((response) => {
+    if(!response.ok){
+      return response.text()
+      .then(errorText =>{throw new Error(errorText)})
+    }
+    return response.json()
+  })
+    
     .then(function(data){ 
       offSpinner();
+      result.classList.add('text-dark');
+      form.classList.add('text-dark');
     console.log(data.result);
     result.innerHTML=data.result;
-    
-    })}
+    messageLarger.classList.add('d-none');
+    messageNegative.classList.add('d-none');
+    })
+
+    .catch(error => {
+      offSpinner();
+      messageNegative.classList.add('d-none');
+      messageLarger.classList.add('d-none');
+      result.classList.remove('text-dark');
+      result.classList.add('text-danger');
+      result.innerText = 'Server Error: '+error.message;
+      
+    })
+  
+  }
      else if(input.value>50){
       offSpinner();
+      messageNegative.classList.add('d-none');
+      const messageLarger = document.getElementById('messageLarger');
+      messageLarger.classList.remove('d-none');
+      form.classList.remove('text-dark');
       form.classList.add('text-danger');
-      result.innerHTML="Can't be larger than 50";
-      result.classList.add('text-danger');
       
         }
     else if(input.value<0){
       offSpinner();
+      messageLarger.classList.add('d-none');
+      const messageNegative = document.getElementById('messageNegative');
+      messageNegative.classList.remove('d-none');
+      form.classList.remove('text-dark');
       form.classList.add('text-danger');
-      result.innerHTML="Can't be a negative number";
-      result.classList.add('text-danger');
      }
      
     }
     )
-    
