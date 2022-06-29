@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci - Jonathan Cohen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <h1 class="display-1 m-5">Fibonacci Calculator</h1>
+    <form class="d-flex flex-row m-5 p-2 allign-items-center">
+        <div class=" fs-6 p-1 align-self-center">
+            The Fibonacci Of
+          </div>
+          <div class="p-1">
+            <input type="number" size="1" class="form-control" id="input" placeholder="#">
+          </div>
+          <div class="p-1">
+            <button type="button" class="btn btn-primary" id="btn">Is</button>
+        </div> 
+            <div class="fs4 p-1 align-self-center">
+               <u><b id="result" class="result" role="status"></b></u> 
+            </div>
+            <div class="fs4 p-1 align-self-center">
+                <u><b id="spinner" class="spinner-border d-none" role="status"></b></u> 
+             </div>
+        </form>
+        <div class="message d-none" id="message"></div>
+        
+
+        <div class="fibonacci-results">
+            <div class="d-flex flex-row">
+                <div class="display-3 m-5">Results</div>
+                <div class="spinner-border mt-5 d-none" id="spinnerResults"></div>
+            </div>
+            <ul id="resultsList"></ul>
+            
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+
+</body>
+</html>
