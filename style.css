@@ -3,19 +3,17 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.message-larger{
+.message{
   color: #a94442;
   background-color:#EBCCCC ;
   width: 15%;
-  margin-left: 17%;
-  margin-top: -5%;
-  
+  margin-left: 18%;
+  margin-top: -4%;
+  padding-left: 1%;
 }
-.message-negative{
-  color: #a94442;
-  background-color:#EBCCCC ;
-  width: 15%;
-  margin-left: 17%;
-  margin-top: -5%;
-  
+li{
+  border-bottom: 1px solid black;
+  list-style: none;
+  width: 75%;
+  padding: 1%;
 }
