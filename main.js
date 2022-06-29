@@ -6,6 +6,19 @@ const btn = document.getElementById('btn');
 const result = document.getElementById('result');
 const resultsList = document.getElementById('resultsList');
 const messageError = document.getElementById('message');
+const checkBox = document.getElementById('checkbox');
+function fibonacci(inputNumber){
+    let fib = [0, 1];
+    let data = [];
+    
+    for(let i = 2; i <= inputNumber; i++) {
+      fib[i] = fib[i - 1] + fib[i - 2]; 
+      data.push(fib[i]);
+    }
+    
+    return data[data.length-1];
+      
+}
 function message (messageInput){
   offSpinner();
       messageError.classList.remove('d-none');
@@ -38,13 +51,10 @@ btn.addEventListener('click',function(){
   onSpinnerResults();
   let urlComplete = url + input.value;
   
-  if(input.value<=50 && input.value>=0){
+  if(checkBox.checked == true){
+  if(input.value<=50 && input.value>=0 && input.value!=42 ){
   fetch(urlComplete)
   .then((response) => {
-    if(!response.ok){
-      return response.text()
-      .then(errorText =>{throw new Error(errorText)})
-    }
     return response.json()
   })
     
@@ -57,16 +67,6 @@ btn.addEventListener('click',function(){
     messageError.classList.add('d-none');
     
     })
-
-    .catch(error => {
-      offSpinner();
-      messageError.classList.add('d-none');
-      result.classList.remove('d-none');
-      result.classList.remove('text-dark');
-      result.classList.add('text-danger');
-      result.innerText = 'Server Error: '+error.message;
-      
-    })
   
   }
      else if(input.value>50){
@@ -76,8 +76,32 @@ btn.addEventListener('click',function(){
     else if(input.value<0){
       message("Can't be a negative number");
      }
-     
-     fetch(urlResults)
+     else{
+        offSpinner();
+        result.classList.remove('d-none');
+        messageError.classList.add('d-none');
+            result.classList.add('text-dark');
+            form.classList.add('text-dark');
+        result.innerHTML = fibonacci(input.value);
+     }
+    }else{
+        if(input.value<=50 && input.value>=0){
+            offSpinner();
+            messageError.classList.add('d-none');
+            result.classList.add('text-dark');
+            form.classList.add('text-dark');
+            result.classList.remove('d-none');
+            result.innerHTML = fibonacci(input.value);
+        }else if(input.value>50){
+            message("Can't be larger than 50");
+            
+              }
+          else if(input.value<0){
+            message("Can't be a negative number");
+           }
+    }
+
+    fetch(urlResults)
      .then((response) =>{
         return response.json()
      })
