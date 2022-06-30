@@ -45,7 +45,55 @@ function offSpinnerResults(){
     const spinnerOffResults = document.getElementById('spinnerResults');
     spinnerOffResults.classList.add('d-none');
 }
+const sortBy = document.getElementById('sortBy');
+ const numAsc = document.getElementById('numAsc');
+ const numDesc = document.getElementById('numDesc');
+ const dateAsc = document.getElementById('dateAsc');
+ const dateDesc = document.getElementById('dateDesc');
+ const sort = document.getElementById('sort');
+ function toSort(sorted){
+  onSpinnerResults();
+    fetch(urlResults)
+     .then((response) =>{
+        return response.json()
+     })
+     .then(function(data){
+    
+    
+    let res = "";
+        const slicedArray= data.results.sort(sorted).slice(0,10);
+        for(let i=0; i<slicedArray.length;i++){
+          let date = new Date(data.results[i].createdDate);
+            res += "<li>"+'The Fibonacci of '+"<strong>"+slicedArray[i].number+"</strong>"+ ' is '+"<strong>"+slicedArray[i].result+"</strong>"+'. Calculated at: '+date+"</li>";
+            
+        }
+        offSpinnerResults();
+        resultsList.classList.remove('d-none');
+        resultsList.innerHTML = res;
+ }
+  
+ )
+ }
+function conditionsSort(){
+  if(numAsc.selected == true){
+    toSort(function(a,b){return a.number-b.number})
+    }
+    else if(numDesc.selected == true){
+      toSort(function(a,b){return b.number-a.number});
+    }
+    else if(dateAsc.selected == true){
+      toSort(function(a,b){return a.createdDate-b.createdDate});
+    }
+    else if(dateDesc.selected == true){
+      toSort(function(a,b){return b.createdDate-a.createdDate});
+    }
+    else{
+      toSort(function(a,b){return b.createdDate-a.createdDate});
+    }
+    
+}
 
+//Calculate
 btn.addEventListener('click',function(){
   onSpinner();
   onSpinnerResults();
@@ -106,27 +154,15 @@ btn.addEventListener('click',function(){
         return response.json()
      })
      .then(function(data){
-        offSpinnerResults();
-        let res = "";
-        const slicedArray= data.results.sort(function(a,b){return b.createdDate-a.createdDate}).slice(0,10);
-        for(let i=0; i<slicedArray.length;i++){
-          let date = new Date(data.results[i].createdDate);
-            res += "<li>"+'The Fibonacci of '+"<strong>"+slicedArray[i].number+"</strong>"+ ' is '+"<strong>"+slicedArray[i].result+"</strong>"+'. Calculated at: '+date+"</li>";
-            
-        }
-        resultsList.classList.remove('d-none');
-        resultsList.innerHTML = res;
-        
-        
+      conditionsSort();
      })
-
-
-
-
-
-    }
-    )
-
+         })
+         
+ 
     
-
-
+//Sort
+ 
+ sort.addEventListener('change',function(){
+  conditionsSort();
+    
+ })

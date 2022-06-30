@@ -17,3 +17,12 @@ li{
   width: 75%;
   padding: 1%;
 }
+.form-select{
+  width: 15%;
+  background-color: #CCCCCC;
+  border: 1px solid black;
+}
+option{
+  background-color: #FFFFFF;
+  border: 1px solid black;
+}
