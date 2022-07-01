@@ -84,9 +84,6 @@ function conditionsSort(){
     else if(dateAsc.selected == true){
       toSort(function(a,b){return a.createdDate-b.createdDate});
     }
-    else if(dateDesc.selected == true){
-      toSort(function(a,b){return b.createdDate-a.createdDate});
-    }
     else{
       toSort(function(a,b){return b.createdDate-a.createdDate});
     }
